@@ -15,7 +15,7 @@ A cumulative table preserves historical data by combining snapshots of data over
 - Facilitates historical analysis without requiring shuffle operations.
 
 - Enables state transition analysis.
-- 
+
 - Everything is always sorted. When we use spark, it will help us avoid shuffling. 
 
 ### Drawbacks
@@ -23,3 +23,13 @@ A cumulative table preserves historical data by combining snapshots of data over
 Sequential backfilling is mandatory.
 
 Handling sensitive data (e.g., deleted records) requires careful design.
+
+# Key concepts to understand
+
+## Temporal Cardinality Explosion
+
+Adding temporal aspects significantly increases the size and complexity of the data. For instance, tracking player statistics daily would multiply the dataset size by the number of days. Proper use of nested structures like arrays helps manage this explosion efficiently.
+
+## Run-Length Encoding Compression
+
+This technique compresses repeated data, making formats like Parquet optimal for cumulative tables. However, shuffles in distributed systems (e.g., Spark) can disrupt compression, so JOINs and GROUP BYs must be carefully handled.
