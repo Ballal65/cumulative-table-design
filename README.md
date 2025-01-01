@@ -20,9 +20,9 @@ A cumulative table preserves historical data by combining snapshots of data over
 
 ### Drawbacks
 
-Sequential backfilling is mandatory.
+- Sequential backfilling is mandatory.
 
-Handling sensitive data (e.g., deleted records) requires careful design.
+- Handling sensitive data (e.g., deleted records) requires careful design.
 
 # Key concepts to understand
 
